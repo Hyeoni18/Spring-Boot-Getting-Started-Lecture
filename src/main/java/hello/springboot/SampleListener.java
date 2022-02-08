@@ -1,5 +1,6 @@
 package hello.springboot;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -10,12 +11,19 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(1) //Runner 가 여러 개면 순서 지정
 public class SampleListener implements ApplicationRunner {
+
+    @Value("${boot.fullName}")
+    private String name;
+
+    @Value("${boot.count}")
+    private int count;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("foo : "+args.containsOption("foo")); //foo : false
-        System.out.println("bar : "+args.containsOption("bar")); //bar : true
+        System.out.println("============================");
+        System.out.println(name);
+        System.out.println(count);
+        System.out.println("============================");
     }
 }

@@ -14,8 +14,9 @@ import java.io.PrintStream;
 public class Application {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder()
-                .sources(Application.class)
-                .run(args);
+        SpringApplication app = new SpringApplication(Application.class);
+  //      app.addListeners(new SampleListener());
+        app.setWebApplicationType(WebApplicationType.NONE);
+        app.run(args);
     }
 }

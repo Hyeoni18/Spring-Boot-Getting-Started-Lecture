@@ -11,11 +11,9 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <spring-framework.version>5.1.9.RELEASE</spring-framework.version>
     </properties>
 
     <!-- Inherit defaults from Spring Boot -->
-    <!-- 메이븐 간에는 스프링 계층 구조를 만들 수 있음. 현 프로젝트의 부모 프로젝트로 spring-boot-starter-parent 를 지정. -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -23,7 +21,6 @@
     </parent>
 
     <!-- Add typical dependencies for a web application -->
-    <!-- 하나만 추가 했는데 어떻게 수많은 의존성이 들어왔을까 -->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

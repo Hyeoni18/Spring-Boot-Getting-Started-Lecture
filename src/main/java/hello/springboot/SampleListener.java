@@ -1,5 +1,7 @@
 package hello.springboot;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SampleListener implements ApplicationRunner {
 
+    private Logger logger = LoggerFactory.getLogger(SampleListener.class);
+
     @Autowired
     private String hello;
 
@@ -22,6 +26,12 @@ public class SampleListener implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        logger.info("========================");
+        logger.info(hello);
+        logger.info(bootProperties.getName());
+        logger.info(bootProperties.getFullName());
+        logger.info("========================");
+
         System.out.println("============================");
         System.out.println(hello);
         System.out.println(bootProperties.getName());

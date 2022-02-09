@@ -26,16 +26,10 @@ public class SampleListener implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        logger.info("========================");
-        logger.info(hello);
-        logger.info(bootProperties.getName());
-        logger.info(bootProperties.getFullName());
-        logger.info("========================");
-
-        System.out.println("============================");
-        System.out.println(hello);
-        System.out.println(bootProperties.getName());
-        System.out.println(bootProperties.getFullName());
-        System.out.println("============================");
+        logger.debug("========================");
+        logger.debug(hello);
+        logger.debug(bootProperties.getName());
+        logger.debug(bootProperties.getFullName());
+        logger.debug("========================");
     }
 }

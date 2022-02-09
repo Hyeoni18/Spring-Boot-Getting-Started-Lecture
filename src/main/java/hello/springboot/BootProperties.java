@@ -19,7 +19,7 @@ public class BootProperties {
     @NotEmpty
     private String name;
 
-    @Size(min = 0, max = 100)
+    //@Size(min = 0, max = 100)
     private int count; //properties 에서는 타입을 지정하지 않지만 컨버전을 지원.
 
     private String fullName;

@@ -15,14 +15,17 @@ import org.springframework.stereotype.Component;
 public class SampleListener implements ApplicationRunner {
 
     @Autowired
-    BootProperties properties;
+    private String hello;
+
+    @Autowired
+    private BootProperties bootProperties;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("============================");
-        System.out.println(properties.getFullName());
-        System.out.println(properties.getCount());
-        System.out.println(properties.getSessionTimeout());
+        System.out.println(hello);
+        System.out.println(bootProperties.getName());
+        System.out.println(bootProperties.getFullName());
         System.out.println("============================");
     }
 }

@@ -21,8 +21,8 @@ public class ApplicationTest {
 
     @Test
     public void contextLoads() {
-        assertThat(environment.getProperty("boot.fullName"))
-                .isEqualTo("heehee ohoh"); //properties에 정의된 값
+        assertThat(environment.getProperty("boot.name"))
+                .isEqualTo("heehee"); //properties에 정의된 값
 
     }
 }

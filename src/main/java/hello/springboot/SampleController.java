@@ -1,27 +1,24 @@
 package hello.springboot;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import org.springframework.hateoas.EntityModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+@RestController
 public class SampleController {
 
     @GetMapping("/hello")
-    public String hello() {
-        throw new SampleException();
+    public EntityModel hello() {
+        Hello hello = new Hello();
+        hello.setPrefix("Hey");
+        hello.setName("spring");
+        //링크 정보 추가 하는 방법.
+        EntityModel<Hello> entityModel = new EntityModel<>(hello);
+        entityModel.add(linkTo(methodOn(SampleController.class).hello()).withSelfRel());
+
+        return entityModel;
     }
-
-    //컨트롤러 내부에서만 사용 가능. 전역으로 사용하려면 클래스를 새로 생성하고 컨트롤러 어드바이스를 붙여야 함.
-//    @ExceptionHandler(SampleException.class)
-//    public @ResponseBody SampleError sampleError(SampleException s) {
-//        SampleError sampleError = new SampleError();
-//        sampleError.setMessage("error.sample.key");
-//        sampleError.setReason("IDK");
-//        return sampleError;
-//    }
-
 }

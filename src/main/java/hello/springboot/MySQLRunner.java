@@ -13,9 +13,9 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 @Component
-public class H2Runner implements ApplicationRunner {
+public class MySQLRunner implements ApplicationRunner {
 
-    Logger logger = LoggerFactory.getLogger(H2Runner.class);
+    Logger logger = LoggerFactory.getLogger(MySQLRunner.class);
 
     @Autowired
     DataSource dataSource;
@@ -27,6 +27,7 @@ public class H2Runner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         try(Connection connection = dataSource.getConnection()) {
 
+            logger.info(String.valueOf(dataSource.getClass())); //어떤 JDBC 를 사용하는지 알 수 있음.
             logger.info(connection.getMetaData().getURL());
             logger.info(connection.getMetaData().getUserName()); //SA
 

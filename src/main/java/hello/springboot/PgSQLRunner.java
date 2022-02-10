@@ -13,9 +13,9 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 @Component
-public class MySQLRunner implements ApplicationRunner {
+public class PgSQLRunner implements ApplicationRunner {
 
-    Logger logger = LoggerFactory.getLogger(MySQLRunner.class);
+    Logger logger = LoggerFactory.getLogger(PgSQLRunner.class);
 
     @Autowired
     DataSource dataSource;
@@ -32,10 +32,10 @@ public class MySQLRunner implements ApplicationRunner {
             logger.info(connection.getMetaData().getUserName()); //SA
 
             Statement statement = connection.createStatement();
-            String sql = "CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))";
+            String sql = "CREATE TABLE ACCOUNT (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))";
             statement.executeUpdate(sql);
         }
 
-        jdbcTemplate.execute("INSERT INTO USER VALUES (1, 'spring')"); //간결하게 sql 을 사용할 수 있음.
+        jdbcTemplate.execute("INSERT INTO ACCOUNT VALUES (1, 'spring')"); //간결하게 sql 을 사용할 수 있음.
     }
 }

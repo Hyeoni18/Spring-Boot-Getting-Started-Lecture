@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class Application {
 
+    //Client 임
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Application.class);
   //      app.setWebApplicationType(WebApplicationType.NONE);
